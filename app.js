@@ -110,7 +110,8 @@ Bedrock.prototype.init = function () {
 		var models = fileLoader.loadModels()
 		var policies = fileLoader.loadPolicies()
 		var routes = fileLoader.loadRoutes()
-		var controllers = fileLoader.loadControllers('./api/controllers/')
+		var controllers = fileLoader._loadControllers()
+		//var controllers = fileLoader.loadControllers('./api/controllers/')
 		var middlewares = fileLoader.loadMiddlewares()
 
 		var policyConfig = fileLoader.loadPolicyConfig()

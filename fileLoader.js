@@ -18,7 +18,7 @@ module.exports = {
 			for (var i = 0; i != files.length; ++i) {
 				var fileName = files[i]
 				if (this.isJsFile(fileName)) {
-					var req = require('../api/services/' + fileName)
+					var req = require('../../api/services/' + fileName)
 					services[fileName.slice(0, fileName.length - 3)] = req
 				}
 			}
@@ -35,7 +35,7 @@ module.exports = {
 			for (var i = 0; i != files.length; ++i) {
 				var fileName = files[i]
 				if (this.isJsFile(fileName)) {
-					var req = require('../api/policies/' + fileName)
+					var req = require('../../api/policies/' + fileName)
 					policies[fileName.slice(0, fileName.length - 3)] = req
 				}
 			}
@@ -52,7 +52,7 @@ module.exports = {
 			for (var i = 0; i != files.length; ++i) {
 				var fileName = files[i]
 				if (this.isJsFile(fileName)) {
-					var req = require('../api/models/' + fileName)
+					var req = require('../../api/models/' + fileName)
 					models[fileName.slice(0, fileName.length - 3)] = req
 				}
 			}
@@ -64,9 +64,26 @@ module.exports = {
 
 	loadRoutes() {
 		try {
-			return require('../api/config/routes.js')
+			return require('../../api/config/routes.js')
 		} catch (e) {
 			Bedrock.log.error('fileLoader.loadRoutes', e)
+		}
+	},
+
+	_loadControllers() {
+		try {
+			var configs = {}
+			var files = fs.readdirSync('./api/controllers')
+			for (var i = 0; i != files.length; ++i) {
+				var fileName = files[i]
+				if (this.isJsFile(fileName)) {
+					var req = require('../../api/controllers/' + fileName)
+					configs[fileName.slice(0, fileName.length - 3)] = req
+				}
+			}
+			return configs
+		} catch (e) {
+			Bedrock.log.error('fileLoader.loadConfigFolder', e)
 		}
 	},
 
@@ -77,8 +94,8 @@ module.exports = {
 			for (var i = 0; i != files.length; ++i) {
 				var fileName = files[i]
 				if (this.isJsFile(fileName)) {
-					var req = require('.' + path + fileName)
-					var searchName = path.replace('./api/controllers/', '')
+					var req = require('../.' + path + fileName)
+					var searchName = path.replace('../../api/controllers/', '')
 					searchName = searchName.replace('/', '.')
 					searchName = searchName + fileName.slice(0, fileName.length - 3)
 					controllers[searchName] = req
@@ -97,7 +114,7 @@ module.exports = {
 
 	loadPolicyConfig() {
 		try {
-			return require('../api/config/policies.js')
+			return require('../../api/config/policies.js')
 		} catch (e) {
 			Bedrock.log.error('fileLoader.loadPolicyConfig', e)
 		}
@@ -111,7 +128,7 @@ module.exports = {
 			for (var i = 0; i != files.length; ++i) {
 				var fileName = files[i]
 				if (this.isJsFile(fileName)) {
-					var req = require('../api/config/' + fileName)
+					var req = require('../../api/config/' + fileName)
 					configs[fileName.slice(0, fileName.length - 3)] = req
 				}
 			}
@@ -128,7 +145,7 @@ module.exports = {
 			for (var i = 0; i != files.length; ++i) {
 				var fileName = files[i]
 				if (this.isJsFile(fileName)) {
-					var req = require('../api/responses/' + fileName)
+					var req = require('../../api/responses/' + fileName)
 					responses[fileName.slice(0, fileName.length - 3)] = req
 				}
 			}
@@ -145,7 +162,7 @@ module.exports = {
 			for (var i = 0; i != files.length; ++i) {
 				var fileName = files[i]
 				if (this.isJsFile(fileName)) {
-					var req = require('../api/middlewares/' + fileName)
+					var req = require('../../api/middlewares/' + fileName)
 					responses[fileName.slice(0, fileName.length - 3)] = req
 				}
 			}

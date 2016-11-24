@@ -1,6 +1,6 @@
 {
   "name": "bedrock-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "MVC framework for nodejs",
   "main": "app.js",
   "scripts": {
@@ -13,9 +13,9 @@
   "author": "Marc Deletang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MarcDeletang/bedrock/issues"
+    "url": "https://github.com/MarcDeletang/bedrock-js/issues"
   },
-  "homepage": "https://github.com/MarcDeletang/bedrock#readme",
+  "homepage": "https://github.com/MarcDeletang/bedrock-js#readme",
   "dependencies": {
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-regenerator": "^6.16.1",
@@ -26,7 +26,6 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "gulp": "^3.9.1",
-    "gulp-task-loader": "^1.4.4",
     "lodash": "^4.17.2",
     "source-map-support": "^0.4.6",
     "winston": "^2.3.0"

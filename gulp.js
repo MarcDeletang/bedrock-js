@@ -1,13 +1,11 @@
 var app = require('./middlewareHandler.js').expose()
 var express = require('express')
-var loader = require('gulp-task-loader')('tasks')
 var _ = require('lodash')
 
 module.exports = {
 
 	init(bedrock) {
-		var dirName = __dirname.substr(0, __dirname.lastIndexOf('/'))
-		dirName = dirName + '/www'
+		dirName = require('path').dirname(require.main.filename) + '/www'
 
 		if (bedrock.config.bedrock.serveFiles == null)
 			return bedrock.log.warn('Missing config in bedrock: serveFiles')
@@ -25,9 +23,9 @@ module.exports = {
 			return
 		var gulp = null
 		try {
-			var gulp = require('../gulpfile.js')
+			var gulp = require(require('path').dirname(require.main.filename) + '/gulpfile.js')
 		} catch (e) {
-			bedrock.log.warn('No gulpfile found, cannot watch')
+			bedrock.log.warn('No gulpfile found, cannot watch', e)
 			return
 		}
 		if (gulp && _.isFunction(gulp.watch)) {
