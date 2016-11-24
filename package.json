@@ -1,0 +1,27 @@
+{
+  "name": "bedrock",
+  "version": "0.0.1",
+  "description": "MVC framework for nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcDeletang/bedrock.git"
+  },
+  "author": "Marc Deletang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcDeletang/bedrock/issues"
+  },
+  "homepage": "https://github.com/MarcDeletang/bedrock#readme",
+  "dependencies": {
+    "bedrock-orm": "0.0.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "gulp-task-loader": "^1.4.4",
+    "lodash": "^4.17.2",
+    "winston": "^2.3.0"
+  }
+}
