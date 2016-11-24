@@ -1,5 +1,5 @@
 {
-  "name": "bedrock",
+  "name": "bedrock-js",
   "version": "0.0.1",
   "description": "MVC framework for nodejs",
   "main": "app.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarcDeletang/bedrock.git"
+    "url": "https://github.com/MarcDeletang/bedrock.git"
   },
   "author": "Marc Deletang",
   "license": "ISC",
