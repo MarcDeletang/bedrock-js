@@ -79,6 +79,19 @@ module.exports = {
 				if (this.isJsFile(fileName)) {
 					var req = require('../../api/controllers/' + fileName)
 					configs[fileName.slice(0, fileName.length - 3)] = req
+				} else {
+					var stat = fs.statSync('./api/controllers/' + fileName)
+					if (stat.isDirectory()) {
+						var filesChild = fs.readdirSync('./api/controllers/' + fileName)
+						for (var j = 0; j != filesChild.length; ++j) {
+							var fileNameChild = filesChild[j]
+							if (this.isJsFile(fileNameChild)) {
+								var req = require('../../api/controllers/' + fileName + '/' + fileNameChild)
+								configs[fileName + '.' + fileNameChild.slice(0, fileNameChild.length - 3)] = req
+							}
+
+						}
+					}
 				}
 			}
 			return configs
