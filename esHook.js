@@ -9,7 +9,7 @@ var esFiles = [
   'bedrock-orm/repository.js'
 ]
 
-var allowCompileBedroc = function (filename) {
+var allowCompileBedrock = function (filename) {
   for (var i = 0; i != esFiles.length; ++i) {
     if (filename.indexOf(esFiles[i]) != -1)
       return false
@@ -21,7 +21,7 @@ var allowCompileBedroc = function (filename) {
 
 module.exports = {
   init: function (config) {
-    config.ignore = allowCompileBedroc
+    config.ignore = allowCompileBedrock
     if (!config.compile) {
       console.log("Babel hook deactivated.")
     } else {
