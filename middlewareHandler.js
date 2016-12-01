@@ -31,12 +31,14 @@ module.exports = {
 		express.disable('x-powered-by')
 		express.use(function (req, res, next) {
 			req.options = {}
-			next()
+			return next()
 		})
 		if (bedrock.config.middlewares && bedrock.config.middlewares.express && bedrock.config.middlewares.express.bodyParserJson == true) {
 			if (bedrock.verbose)
 				bedrock.log.info('Loaded bodyParserJson middleware')
-			express.use(bodyParser.json({limit: '50mb'}))
+			express.use(bodyParser.json({
+				limit: '50mb'
+			}))
 		}
 		if (bedrock.config.middlewares && bedrock.config.middlewares.express && bedrock.config.middlewares.express.bodyParserUrlencoded == true) {
 			if (bedrock.verbose)
@@ -44,6 +46,14 @@ module.exports = {
 			express.use(bodyParser.urlencoded({
 				extended: true
 			}))
+		}
+		if (bedrock.config.middlewares && bedrock.config.middlewares.globals && _.isArray(bedrock.config.middlewares.globals)) {
+			for (var i = 0; i != bedrock.config.middlewares.globals.length; ++i) {
+				if (!_.isFunction(bedrock.config.middlewares.globals[i]))
+					bedrock.log.warn('Invalid globalMiddlewares', i)
+				else
+					express.use(bedrock.config.middlewares.globals[i])
+			}
 		}
 	},
 
