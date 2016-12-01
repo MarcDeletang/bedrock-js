@@ -2,4 +2,4 @@
 
 You can find an example [here]:
 
- [here]: <http://angularjs.org>
+ [here]: <https://github.com/MarcDeletang/bedrock-example>
