@@ -1,6 +1,6 @@
 {
   "name": "bedrock-js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "MVC framework for nodejs",
   "main": "app.js",
   "scripts": {
